@@ -1,0 +1,4 @@
+export ROBBIE_PROJ_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+export ROBBIE_MODULE=${ROBBIE_PROJ_DIR}/robbie
+
+export PYTHONPATH=${PYTHONPATH}:${ROBBIE_PROJ_DIR}
