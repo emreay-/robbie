@@ -1,0 +1,8 @@
+{
+    "left_motor_A": 22,
+    "left_motor_B": 23,
+    "left_motor_enable": 24,
+    "right_motor_A": 17,
+    "right_motor_B": 27,
+    "right_motor_enable": 25
+}

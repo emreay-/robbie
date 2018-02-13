@@ -1,0 +1,39 @@
+{
+    "left":
+        {
+            "forward":
+            {
+                "left_motor_A": 1,
+                "left_motor_B": 0
+            },
+            "backward":
+            {
+                "left_motor_A": 0,
+                "left_motor_B": 1
+            },
+            "stationary":
+            {
+                "left_motor_A": 1,
+                "left_motor_B": 1
+            }
+        },
+
+    "right":
+        {
+            "forward":
+            {
+                "right_motor_A": 0,
+                "right_motor_B": 1
+            },
+            "backward":
+            {
+                "right_motor_A": 1,
+                "right_motor_B": 0
+            },
+            "stationary":
+            {
+                "right_motor_A": 1,
+                "right_motor_B": 1
+            }
+        }
+}
