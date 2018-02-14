@@ -1,5 +1,5 @@
 import json
-from typings import Tuple
+from typing import Tuple
 
 import pigpio
 
@@ -31,10 +31,10 @@ class DifferentialDrive(object):
     
     def drive(self, command: drive_command_type):
         (left_motor_command, right_motor_command) = command
-        send_motor_command(left_motor_command, motor='left')
-        send_motor_command(right_motor_command, motor='right')
+        self.send_motor_command(left_motor_command, motor='left')
+        self.send_motor_command(right_motor_command, motor='right')
 
-    def send_motor_command(self, command: motor_command, motor: str):
+    def send_motor_command(self, command: motor_command_type, motor: str):
         if motor not in ['left', 'right']:
             return
 
@@ -44,7 +44,7 @@ class DifferentialDrive(object):
         (direction, velocity) = command
         direction = self.direction_to_str(direction)
 
-        self.pi.set_PWM_dutycycle(self.pins[enable], velocity)
+        self.pi.set_PWM_dutycycle(self.pins[motor_enable], velocity)
         self.pi.write(self.pins[motor_A], self.config[motor][direction][motor_A])
         self.pi.write(self.pins[motor_B], self.config[motor][direction][motor_B])
 

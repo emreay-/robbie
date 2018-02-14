@@ -25,7 +25,7 @@ class Teleop(object):
         self.reset_motor_command()
 
     def reset_motor_command(self):
-        self.motor_command = KeyCommand.stop
+        self.motor_command = ((0, 0), (0, 0))
 
     def run(self):
         with Listener(on_press=self.key_pressed, 
