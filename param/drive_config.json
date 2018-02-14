@@ -3,13 +3,13 @@
         {
             "forward":
             {
-                "left_motor_A": 1,
-                "left_motor_B": 0
+                "left_motor_A": 0,
+                "left_motor_B": 1
             },
             "backward":
             {
-                "left_motor_A": 0,
-                "left_motor_B": 1
+                "left_motor_A": 1,
+                "left_motor_B": 0
             },
             "stationary":
             {
@@ -22,13 +22,13 @@
         {
             "forward":
             {
-                "right_motor_A": 0,
-                "right_motor_B": 1
+                "right_motor_A": 1,
+                "right_motor_B": 0
             },
             "backward":
             {
-                "right_motor_A": 1,
-                "right_motor_B": 0
+                "right_motor_A": 0,
+                "right_motor_B": 1
             },
             "stationary":
             {
