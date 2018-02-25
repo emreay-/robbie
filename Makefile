@@ -1,6 +1,6 @@
 .PHONY: installDependencies
 installDependencies:
-	sudo pip3 install pigpio
-	sudo pip3 install pynput
+	sudo pip install pigpio
+	sudo pip install pynput
 
 .SILENT:
