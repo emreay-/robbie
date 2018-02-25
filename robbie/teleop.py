@@ -3,7 +3,7 @@ from collections import defaultdict
 
 from pynput.keyboard import Key, Listener
 
-from robbie.scripts.motor_drive import DifferentialDrive
+from robbie.motor_drive import DifferentialDrive
 
 
 class Command:
