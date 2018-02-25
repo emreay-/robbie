@@ -15,7 +15,7 @@ python:
 before_install:
   - sudo apt-key update
   - sudo apt-get update
-  - export ROBBIE_PROJ_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+  - export ROBBIE_PROJ_DIR="$(pwd)"
   - export ROBBIE_PARAM_DIR=${ROBBIE_PROJ_DIR}/param
   - export ROBBIE_MODULE=${ROBBIE_PROJ_DIR}/robbie
   - export PYTHONPATH=${PYTHONPATH}:${ROBBIE_PROJ_DIR}
