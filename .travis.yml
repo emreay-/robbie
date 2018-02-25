@@ -26,6 +26,9 @@ install:
   - cd $ROBBIE_PROJ_DIR
   - make installDependencies
 
+script:
+  - nosetests .
+
   # OpenCV v3.0.0 (beta) install code (modified from orignal source: https://github.com/jayrambhia/Install-OpenCV)
 
 #  # OpenCV dependencies - Details available at: http://docs.opencv.org/trunk/doc/tutorials/introduction/linux_install/linux_install.html
