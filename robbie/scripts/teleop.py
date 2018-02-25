@@ -1,21 +1,28 @@
 import os
+from collections import defaultdict
 
 from pynput.keyboard import Key, Listener
 
 from robbie.scripts.motor_drive import DifferentialDrive
 
 
+class Command:
+    forward = ((1, 250), (1, 250))
+    backward = ((-1, 250), (-1, 250))
+    left = ((-1, 250), (1, 250))
+    right = ((1, 250), (-1, 250))
+    stop = ((0, 0), (0, 0))
+
+
 class KeyCommand(object):
-    forward = Key.up
-    backward = Key.down
-    left = Key.left
-    right = Key.right
-    stop = Key.esc
-    commands = {forward: ((1, 250), (1, 250)), 
-                backward: ((-1, 250), (-1, 250)),
-                left: ((-1, 250), (1, 250)),
-                right: ((1, 250), (-1, 250)),
-                stop: ((0, 0), (0, 0))}
+    _commands = defaultdict(lambda: Command.stop)
+    _commands[Key.up] = Command.forward
+    _commands[Key.down] = Command.backward
+    _commands[Key.left] = Command.left
+    _commands[Key.right] = Command.right
+
+    def __getitem__(self, value):
+        return self._commands[value]
 
 
 class Teleop(object):
@@ -25,7 +32,7 @@ class Teleop(object):
         self.reset_motor_command()
 
     def reset_motor_command(self):
-        self.motor_command = ((0, 0), (0, 0))
+        self.motor_command = Command.stop
 
     def run(self):
         with Listener(on_press=self.key_pressed, 
@@ -33,7 +40,7 @@ class Teleop(object):
             listener.join()
 
     def key_pressed(self, key):
-        self.motor_command = KeyCommand.commands[key]
+        self.motor_command = KeyCommand[key]
         self.differential_driver.drive(self.motor_command)
 
     def key_released(self, key):
