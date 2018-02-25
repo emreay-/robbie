@@ -14,15 +14,12 @@ class Command:
     stop = ((0, 0), (0, 0))
 
 
-class KeyCommand(object):
-    _commands = defaultdict(lambda: Command.stop)
-    _commands[Key.up] = Command.forward
-    _commands[Key.down] = Command.backward
-    _commands[Key.left] = Command.left
-    _commands[Key.right] = Command.right
-
-    def __getitem__(self, value):
-        return self._commands[value]
+class KeyMapping(object):
+    to_command = defaultdict(lambda: Command.stop)
+    to_command[Key.up] = Command.forward
+    to_command[Key.down] = Command.backward
+    to_command[Key.left] = Command.left
+    to_command[Key.right] = Command.right
 
 
 class Teleop(object):
@@ -40,7 +37,7 @@ class Teleop(object):
             listener.join()
 
     def key_pressed(self, key):
-        self.motor_command = KeyCommand[key]
+        self.motor_command = KeyMapping.to_command[key]
         self.differential_driver.drive(self.motor_command)
 
     def key_released(self, key):
